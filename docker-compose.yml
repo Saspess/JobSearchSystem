@@ -7,9 +7,7 @@ services:
     build:
       context: .
       dockerfile: src/Microservices/AccountsMS/AccountsMS.WebApi/Dockerfile
-    depends_on:
-      - mssqldb
-
+    
   mssqldb:
     container_name: "MsSqlDB"
     image: "mcr.microsoft.com/mssql/server:2019-latest"
