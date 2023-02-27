@@ -1,4 +1,5 @@
-﻿using AccountsMS.Data.Models.Organization;
+﻿using AccountsMS.Data.Models.Employee;
+using AccountsMS.Data.Models.Organization;
 using AccountsMS.Data.Repositories.Contracts;
 using Microsoft.Extensions.Configuration;
 using System.Data;
@@ -101,7 +102,7 @@ namespace AccountsMS.Data.Repositories.Implementation
             }
         }
 
-        public async Task CreateOrganizationAsync(OrganizationCreateModel organizationCreateModel)
+        public async Task<OrganizationModel?> CreateOrganizationAsync(OrganizationCreateModel organizationCreateModel)
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -109,11 +110,31 @@ namespace AccountsMS.Data.Repositories.Implementation
 
                 var command = new SqlCommand("spCreateOrganization", connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@First_name", organizationCreateModel.Name);
+                command.Parameters.AddWithValue("@Name", organizationCreateModel.Name);
                 command.Parameters.AddWithValue("@Hometown", organizationCreateModel.Hometown);
                 command.Parameters.AddWithValue("@Email", organizationCreateModel.Email);
 
                 await command.ExecuteNonQueryAsync();
+
+                var getCreatedModelCommand = new SqlCommand("spGetCreatedOrganization", connection);
+                getCreatedModelCommand.CommandType = CommandType.StoredProcedure;
+
+                var reader = await getCreatedModelCommand.ExecuteReaderAsync();
+
+                if (await reader.ReadAsync())
+                {
+                    var organizationModel = new OrganizationModel()
+                    {
+                        Id = Convert.ToInt32(reader["Organization_ID"]),
+                        Name = reader["Name"].ToString(),
+                        Hometown = reader["Hometown"].ToString(),
+                        Email = reader["Email"].ToString()
+                    };
+
+                    return organizationModel;
+                }
+
+                return null;
             }
         }
 

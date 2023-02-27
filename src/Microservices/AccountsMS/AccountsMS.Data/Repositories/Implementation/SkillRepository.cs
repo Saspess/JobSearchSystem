@@ -1,4 +1,5 @@
-﻿using AccountsMS.Data.Models.Skill;
+﻿using AccountsMS.Data.Models.Organization;
+using AccountsMS.Data.Models.Skill;
 using AccountsMS.Data.Repositories.Contracts;
 using Microsoft.Extensions.Configuration;
 using System.Data;
@@ -67,7 +68,7 @@ namespace AccountsMS.Data.Repositories.Implementation
             }
         }
 
-        public async Task CreateSkillAsync(SkillCreateModel skillCreateModel)
+        public async Task<SkillModel?> CreateSkillAsync(SkillCreateModel skillCreateModel)
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -78,6 +79,24 @@ namespace AccountsMS.Data.Repositories.Implementation
                 command.Parameters.AddWithValue("@Name", skillCreateModel.Name);
 
                 await command.ExecuteNonQueryAsync();
+
+                var getCreatedModelCommand = new SqlCommand("spGetCreatedSkill", connection);
+                getCreatedModelCommand.CommandType = CommandType.StoredProcedure;
+
+                var reader = await getCreatedModelCommand.ExecuteReaderAsync();
+
+                if (await reader.ReadAsync())
+                {
+                    var skillModel = new SkillModel()
+                    {
+                        Id = Convert.ToInt32(reader["Skill_ID"]),
+                        Name = reader["Name"].ToString()
+                    };
+
+                    return skillModel;
+                }
+
+                return null;
             }
         }
 

@@ -6,7 +6,7 @@ namespace AccountsMS.Data.Repositories.Contracts
     {
         Task<IEnumerable<SkillModel>> GetAllSkillsAsync();
         Task<SkillModel?> GetSkillByIdAsync(int id);
-        Task CreateSkillAsync(SkillCreateModel skillCreateModel);
+        Task<SkillModel?> CreateSkillAsync(SkillCreateModel skillCreateModel);
         Task UpdateSkillAsync(SkillUpdateModel skillUpdateModel);
         Task DeleteSkillAsync(int id);
     }

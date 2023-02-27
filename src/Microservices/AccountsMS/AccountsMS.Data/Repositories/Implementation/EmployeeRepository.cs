@@ -106,7 +106,7 @@ namespace AccountsMS.Data.Repositories.Implementation
             }
         }
 
-        public async Task CreateEmployeeAsync(EmployeeCreateModel employeeCreateModel)
+        public async Task<EmployeeModel?> CreateEmployeeAsync(EmployeeCreateModel employeeCreateModel)
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -121,6 +121,28 @@ namespace AccountsMS.Data.Repositories.Implementation
                 command.Parameters.AddWithValue("@Email", employeeCreateModel.Email);
 
                 await command.ExecuteNonQueryAsync();
+
+                var getCreatedModelCommand = new SqlCommand("spGetCreatedEmployee", connection);
+                getCreatedModelCommand.CommandType = CommandType.StoredProcedure;
+
+                var reader = await getCreatedModelCommand.ExecuteReaderAsync();
+
+                if (await reader.ReadAsync())
+                {
+                    var employeeModel = new EmployeeModel()
+                    {
+                        Id = Convert.ToInt32(reader["Employee_ID"]),
+                        OrganizationId = Convert.ToInt32(reader["Organization_ID"]),
+                        FirstName = reader["First_name"].ToString(),
+                        LastName = reader["Last_name"].ToString(),
+                        Hometown = reader["Hometown"].ToString(),
+                        Email = reader["Email"].ToString()
+                    };
+
+                    return employeeModel;
+                }
+
+                return null;
             }
         }
 
