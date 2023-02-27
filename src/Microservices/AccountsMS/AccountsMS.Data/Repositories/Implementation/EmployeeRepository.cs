@@ -12,9 +12,9 @@ namespace AccountsMS.Data.Repositories.Implementation
         {
         }
 
-        public async Task<IEnumerable<EmployeeViewModel>> GetAllEmployeesAsync()
+        public async Task<IEnumerable<EmployeeModel>> GetAllEmployeesAsync()
         {
-            List<EmployeeViewModel> employees = new List<EmployeeViewModel>();
+            List<EmployeeModel> employees = new List<EmployeeModel>();
 
             using(var connection = new SqlConnection(connectionString))
             {
@@ -27,7 +27,7 @@ namespace AccountsMS.Data.Repositories.Implementation
 
                 while(await reader.ReadAsync())
                 {
-                    var employeeViewModel = new EmployeeViewModel()
+                    var employeeModel = new EmployeeModel()
                     {
                         Id = Convert.ToInt32(reader["Employee_ID"]),
                         OrganizationId = Convert.ToInt32(reader["Organization_ID"]),
@@ -37,14 +37,14 @@ namespace AccountsMS.Data.Repositories.Implementation
                         Email = reader["Email"].ToString()
                     };
 
-                    employees.Add(employeeViewModel);
+                    employees.Add(employeeModel);
                 }
 
                 return employees;
             }
         }
 
-        public async Task<EmployeeViewModel?> GetEmployeeByIdAsync(int id)
+        public async Task<EmployeeModel?> GetEmployeeByIdAsync(int id)
         {
             using(var connection = new SqlConnection(connectionString))
             {
@@ -58,7 +58,7 @@ namespace AccountsMS.Data.Repositories.Implementation
 
                 if(await reader.ReadAsync())
                 {
-                    var employeeViewModel = new EmployeeViewModel()
+                    var employeeModel = new EmployeeModel()
                     {
                         Id = Convert.ToInt32(reader["Employee_ID"]),
                         OrganizationId = Convert.ToInt32(reader["Organization_ID"]),
@@ -68,14 +68,14 @@ namespace AccountsMS.Data.Repositories.Implementation
                         Email = reader["Email"].ToString()
                     };
 
-                    return employeeViewModel;
+                    return employeeModel;
                 }
                     
                 return null;
             }
         }
 
-        public async Task<EmployeeViewModel?> GetEmployeeByEmailAsync(string email)
+        public async Task<EmployeeModel?> GetEmployeeByEmailAsync(string email)
         {
             using(var connection = new SqlConnection(connectionString))
             {
@@ -89,7 +89,7 @@ namespace AccountsMS.Data.Repositories.Implementation
 
                 if (await reader.ReadAsync())
                 {
-                    var employeeViewModel = new EmployeeViewModel()
+                    var employeeModel = new EmployeeModel()
                     {
                         Id = Convert.ToInt32(reader["Employee_ID"]),
                         OrganizationId = Convert.ToInt32(reader["Organization_ID"]),
@@ -99,7 +99,7 @@ namespace AccountsMS.Data.Repositories.Implementation
                         Email = reader["Email"].ToString()
                     };
 
-                    return employeeViewModel;
+                    return employeeModel;
                 }
                     
                 return null;

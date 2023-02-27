@@ -1,6 +1,6 @@
 ﻿namespace AccountsMS.Data.Models.Employee
 {
-    public class EmployeeViewModel
+    public class EmployeeModel
     {
         public int Id { get; set; }
         public int? OrganizationId { get; set; }

@@ -12,9 +12,9 @@ namespace AccountsMS.Data.Repositories.Implementation
         {
         }
 
-        public async Task<IEnumerable<EmployeeSkillViewModel>> GetAllEmployeeSkillsAsync()
+        public async Task<IEnumerable<EmployeeSkillModel>> GetAllEmployeeSkillsAsync()
         {
-            List<EmployeeSkillViewModel> employeeSkills = new List<EmployeeSkillViewModel>();
+            List<EmployeeSkillModel> employeeSkills = new List<EmployeeSkillModel>();
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -27,13 +27,13 @@ namespace AccountsMS.Data.Repositories.Implementation
 
                 while (await reader.ReadAsync())
                 {
-                    var employeeSkillViewModel = new EmployeeSkillViewModel()
+                    var employeeSkillModel = new EmployeeSkillModel()
                     {
                         Name = reader["Name"].ToString(),
                         ConfirmationCount = Convert.ToInt32(reader["Confirmation_count"])
                     };
 
-                    employeeSkills.Add(employeeSkillViewModel);
+                    employeeSkills.Add(employeeSkillModel);
                 }
 
                 return employeeSkills;

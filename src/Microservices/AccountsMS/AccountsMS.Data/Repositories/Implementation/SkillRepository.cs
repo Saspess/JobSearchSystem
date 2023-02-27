@@ -12,9 +12,9 @@ namespace AccountsMS.Data.Repositories.Implementation
         {
         }
 
-        public async Task<IEnumerable<SkillViewModel>> GetAllSkillsAsync()
+        public async Task<IEnumerable<SkillModel>> GetAllSkillsAsync()
         {
-            List<SkillViewModel> skills = new List<SkillViewModel>();
+            List<SkillModel> skills = new List<SkillModel>();
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -27,20 +27,20 @@ namespace AccountsMS.Data.Repositories.Implementation
 
                 while (await reader.ReadAsync())
                 {
-                    var skillViewModel = new SkillViewModel()
+                    var skillModel = new SkillModel()
                     {
                         Id = Convert.ToInt32(reader["Skill_ID"]),
                         Name = reader["Name"].ToString()
                     };
 
-                    skills.Add(skillViewModel);
+                    skills.Add(skillModel);
                 }
 
                 return skills;
             }
         }
 
-        public async Task<SkillViewModel?> GetSkillByIdAsync(int id)
+        public async Task<SkillModel?> GetSkillByIdAsync(int id)
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -54,13 +54,13 @@ namespace AccountsMS.Data.Repositories.Implementation
 
                 if (await reader.ReadAsync())
                 {
-                    var skillViewModel = new SkillViewModel()
+                    var skillModel = new SkillModel()
                     {
                         Id = Convert.ToInt32(reader["Skill_ID"]),
                         Name = reader["Name"].ToString()
                     };
 
-                    return skillViewModel;
+                    return skillModel;
                 }
 
                 return null;

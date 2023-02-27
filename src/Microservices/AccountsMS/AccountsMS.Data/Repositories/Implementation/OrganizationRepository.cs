@@ -12,9 +12,9 @@ namespace AccountsMS.Data.Repositories.Implementation
         {
         }
 
-        public async Task<IEnumerable<OrganizationViewModel>> GetAllOrganizationsAsync()
+        public async Task<IEnumerable<OrganizationModel>> GetAllOrganizationsAsync()
         {
-            List<OrganizationViewModel> organizations = new List<OrganizationViewModel>();
+            List<OrganizationModel> organizations = new List<OrganizationModel>();
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -27,7 +27,7 @@ namespace AccountsMS.Data.Repositories.Implementation
 
                 while (await reader.ReadAsync())
                 {
-                    var organizationViewModel = new OrganizationViewModel()
+                    var organizationModel = new OrganizationModel()
                     {
                         Id = Convert.ToInt32(reader["Organization_ID"]),
                         Name = reader["Name"].ToString(),
@@ -35,14 +35,14 @@ namespace AccountsMS.Data.Repositories.Implementation
                         Email = reader["Email"].ToString()
                     };
 
-                    organizations.Add(organizationViewModel);
+                    organizations.Add(organizationModel);
                 }
 
                 return organizations;
             }
         }
 
-        public async Task<OrganizationViewModel?> GetOrganizationByIdAsync(int id)
+        public async Task<OrganizationModel?> GetOrganizationByIdAsync(int id)
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -56,7 +56,7 @@ namespace AccountsMS.Data.Repositories.Implementation
 
                 if (await reader.ReadAsync())
                 {
-                    var organizationViewModel = new OrganizationViewModel()
+                    var organizationModel = new OrganizationModel()
                     {
                         Id = Convert.ToInt32(reader["Organization_ID"]),
                         Name = reader["Name"].ToString(),
@@ -64,14 +64,14 @@ namespace AccountsMS.Data.Repositories.Implementation
                         Email = reader["Email"].ToString()
                     };
 
-                    return organizationViewModel;
+                    return organizationModel;
                 }
 
                 return null;
             }
         }
 
-        public async Task<OrganizationViewModel?> GetOrganizationByEmailAsync(string email)
+        public async Task<OrganizationModel?> GetOrganizationByEmailAsync(string email)
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -85,7 +85,7 @@ namespace AccountsMS.Data.Repositories.Implementation
 
                 if (await reader.ReadAsync())
                 {
-                    var organizationViewModel = new OrganizationViewModel()
+                    var organizationModel = new OrganizationModel()
                     {
                         Id = Convert.ToInt32(reader["Organization_ID"]),
                         Name = reader["Name"].ToString(),
@@ -93,7 +93,7 @@ namespace AccountsMS.Data.Repositories.Implementation
                         Email = reader["Email"].ToString()
                     };
 
-                    return organizationViewModel;
+                    return organizationModel;
                 }
 
                 return null;
