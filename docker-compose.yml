@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  accountsms.webapi:
+    container_name: "AccountsMS.WebApi"
+    image: ${DOCKER_REGISTRY-}accountsmswebapi
+    build:
+      context: .
+      dockerfile: src/Microservices/AccountsMS/AccountsMS.WebApi/Dockerfile
+    
+  mssqldb:
+    container_name: "MsSqlDB"
+    image: "mcr.microsoft.com/mssql/server:2019-latest"

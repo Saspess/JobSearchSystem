@@ -1,0 +1,34 @@
+version: '3.4'
+
+services:
+  accountsms.webapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "5100:80"
+      - "44392:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    networks:
+      - jobsearch-network
+    depends_on:
+      - mssqldb
+
+  mssqldb:
+    ports:
+        - "1433:1433"
+    environment:
+       SA_PASSWORD: "<Pass123>"
+       ACCEPT_EULA: "Y"
+    volumes:
+      - mssql-server-linux-data:/var/opt/mssql
+    networks:
+      - jobsearch-network
+
+volumes:
+  mssql-server-linux-data:
+
+networks:
+  jobsearch-network:
