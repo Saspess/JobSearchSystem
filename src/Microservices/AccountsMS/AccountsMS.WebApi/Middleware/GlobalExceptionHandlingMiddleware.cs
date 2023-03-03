@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using System.Net;
+﻿using System.Net;
 using System.Text.Json;
 
 namespace AccountsMS.WebApi.Middleware
@@ -9,7 +8,7 @@ namespace AccountsMS.WebApi.Middleware
         private readonly RequestDelegate _next;
         private readonly ILogger _logger;
 
-        public GlobalExceptionHandlingMiddleware(RequestDelegate next, ILogger logger)
+        public GlobalExceptionHandlingMiddleware(RequestDelegate next, ILogger<GlobalExceptionHandlingMiddleware> logger)
         {
             _next = next;
             _logger = logger;
