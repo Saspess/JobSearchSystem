@@ -6,11 +6,11 @@ namespace AccountsMS.Business.Services.Contracts
     public interface IEmployeeService
     {
         Task<IEnumerable<EmployeeViewDto>> GetAllEmployeesAsync();
-        Task<IEnumerable<EmployeeViewDto>> GetEmployeesAsync(string skillName);
-        Task<IEnumerable<EmployeeSkillViewDto>> GetAllEmployeeSkillsAsync();
-        Task<EmployeeViewDto?> GetEmployeeByIdAsync(int id);
-        Task<EmployeeViewDto?> GetEmployeeByEmailAsync(string email);
-        Task<EmployeeViewDto?> CreateEmployeeAsync(EmployeeCreateDto employeeCreateDto);
+        Task<IEnumerable<EmployeeViewDto>> GetEmployeesBySkillNameAsync(string skillName);
+        Task<IEnumerable<EmployeeSkillViewDto>> GetAllEmployeeSkillsAsync(int id);
+        Task<EmployeeViewDto> GetEmployeeByIdAsync(int id);
+        Task<EmployeeViewDto> GetEmployeeByEmailAsync(string email);
+        Task<EmployeeViewDto> CreateEmployeeAsync(EmployeeCreateDto employeeCreateDto);
         Task AddEmployeeSkillAsync(int employeeId, int skillId);
         Task UpdateEmployeeAsync(EmployeeUpdateDto employeeUpdateDto);
         Task ConfirmEmployeeSkillAsync(int employeeId, int skillId);
