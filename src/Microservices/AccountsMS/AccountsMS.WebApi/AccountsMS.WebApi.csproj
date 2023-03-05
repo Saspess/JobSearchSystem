@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AccountsMS.Business\AccountsMS.Business.csproj" />
     <ProjectReference Include="..\AccountsMS.Data\AccountsMS.Data.csproj" />
   </ItemGroup>
 
