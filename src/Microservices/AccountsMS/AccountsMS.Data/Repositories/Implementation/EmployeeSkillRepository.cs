@@ -12,7 +12,7 @@ namespace AccountsMS.Data.Repositories.Implementation
         {
         }
 
-        public async Task<IEnumerable<EmployeeSkillModel>> GetAllEmployeeSkillsAsync()
+        public async Task<IEnumerable<EmployeeSkillModel>> GetAllEmployeeSkillsAsync(int employeeId)
         {
             List<EmployeeSkillModel> employeeSkills = new List<EmployeeSkillModel>();
 
@@ -22,6 +22,7 @@ namespace AccountsMS.Data.Repositories.Implementation
 
                 var command = new SqlCommand("spGetEmployeeSkills", connection);
                 command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@Employee_ID", employeeId);
 
                 var reader = await command.ExecuteReaderAsync();
 
