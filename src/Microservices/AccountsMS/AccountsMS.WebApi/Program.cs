@@ -6,13 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.ConfigureAutoMapper()
-    .ConfigureFluentValidation()
-    .ConfigureServices();
-
 builder.Services.AddControllers();
 
-builder.Services.AddRepositories();
+builder.Services.ConfigureRepositories()
+    .ConfigureAutoMapper()
+    .ConfigureFluentValidation()
+    .ConfigureServices(); ;
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
