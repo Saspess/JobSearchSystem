@@ -1,9 +1,14 @@
+using AccountsMS.Business.IoC;
 using AccountsMS.Data.IoC;
 using AccountsMS.WebApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.ConfigureAutoMapper()
+    .ConfigureFluentValidation()
+    .ConfigureServices();
 
 builder.Services.AddControllers();
 
