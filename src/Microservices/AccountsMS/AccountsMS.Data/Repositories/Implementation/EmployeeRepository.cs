@@ -44,6 +44,39 @@ namespace AccountsMS.Data.Repositories.Implementation
             }
         }
 
+        public async Task<IEnumerable<EmployeeModel>> GetEmployeesBySkillNameAsync(string skillName)
+        {
+            List<EmployeeModel> employees = new List<EmployeeModel>();
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                await connection.OpenAsync();
+
+                var command = new SqlCommand("spGetEmployeesBySkillName", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@Skill_name", skillName);
+
+                var reader = await command.ExecuteReaderAsync();
+
+                while (await reader.ReadAsync())
+                {
+                    var employeeModel = new EmployeeModel()
+                    {
+                        Id = Convert.ToInt32(reader["Employee_ID"]),
+                        OrganizationId = Convert.ToInt32(reader["Organization_ID"]),
+                        FirstName = reader["First_name"].ToString(),
+                        LastName = reader["Last_name"].ToString(),
+                        Hometown = reader["Hometown"].ToString(),
+                        Email = reader["Email"].ToString()
+                    };
+
+                    employees.Add(employeeModel);
+                }
+
+                return employees;
+            }
+        }
+
         public async Task<EmployeeModel?> GetEmployeeByIdAsync(int id)
         {
             using(var connection = new SqlConnection(connectionString))

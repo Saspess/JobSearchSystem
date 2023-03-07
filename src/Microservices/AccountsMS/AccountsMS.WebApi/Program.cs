@@ -1,3 +1,4 @@
+using AccountsMS.Business.IoC;
 using AccountsMS.Data.IoC;
 using AccountsMS.WebApi.Middleware;
 
@@ -7,7 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddRepositories();
+builder.Services.ConfigureRepositories()
+    .ConfigureAutoMapper()
+    .ConfigureFluentValidation()
+    .ConfigureServices(); ;
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

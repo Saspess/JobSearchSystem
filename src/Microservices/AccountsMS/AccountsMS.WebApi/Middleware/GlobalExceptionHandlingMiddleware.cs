@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AccountsMS.Business.Exceptions;
 using System.Net;
 using System.Text.Json;
 
@@ -9,7 +9,7 @@ namespace AccountsMS.WebApi.Middleware
         private readonly RequestDelegate _next;
         private readonly ILogger _logger;
 
-        public GlobalExceptionHandlingMiddleware(RequestDelegate next, ILogger logger)
+        public GlobalExceptionHandlingMiddleware(RequestDelegate next, ILogger<GlobalExceptionHandlingMiddleware> logger)
         {
             _next = next;
             _logger = logger;
@@ -20,6 +20,23 @@ namespace AccountsMS.WebApi.Middleware
             try
             {
                 await _next(context);
+            }
+            catch (NotFoundException notFoundException)
+            {
+                var code = HttpStatusCode.NotFound;
+
+                string message = string.Empty;
+
+                if (notFoundException.Message == null)
+                {
+                    message = "Model was not found.";
+                }
+                else
+                {
+                    message = notFoundException.Message;
+                }
+
+                await HandleExceptionAsync(context, code, message);
             }
             catch (Exception exception)
             {
