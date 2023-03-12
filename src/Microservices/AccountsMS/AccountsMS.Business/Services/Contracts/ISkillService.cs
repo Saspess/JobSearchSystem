@@ -1,13 +1,14 @@
 ﻿using AccountsMS.Business.DTOs.Skill;
+using AccountsMS.Business.Responce.NonGeneric;
 
 namespace AccountsMS.Business.Services.Contracts
 {
     public interface ISkillService
     {
-        Task<IEnumerable<SkillViewDto>> GetAllSkillsAsync();
-        Task<SkillViewDto> GetSkillByIdAsync(int id);
-        Task<SkillViewDto> CreateSkillAsync(SkillCreateDto skillCreateDto);
-        Task UpdateSkillAsync(SkillUpdateDto skillUpdateDto);
-        Task DeleteSkillAsync(int id);
+        Task<Result> GetAllSkillsAsync();
+        Task<Result> GetSkillByIdAsync(int id);
+        Task<Result> CreateSkillAsync(SkillCreateDto skillCreateDto);
+        Task<Result> UpdateSkillAsync(SkillUpdateDto skillUpdateDto);
+        Task<Result> DeleteSkillAsync(int id);
     }
 }

@@ -1,14 +1,15 @@
 ﻿using AccountsMS.Business.DTOs.Organization;
+using AccountsMS.Business.Responce.NonGeneric;
 
 namespace AccountsMS.Business.Services.Contracts
 {
     public interface IOrganizationService
     {
-        Task<IEnumerable<OrganizationViewDto>> GetAllOrganizationsAsync();
-        Task<OrganizationViewDto> GetOrganizationByIdAsync(int id);
-        Task<OrganizationViewDto> GetOrganizationByEmailAsync(string email);
-        Task<OrganizationViewDto> CreateOrganizationAsync(OrganizationCreateDto organizationCreateDto);
-        Task UpdateOrganizationAsync(OrganizationUpdateDto organizationUpdateDto);
-        Task DeleteOrganizationAsync(int id);
+        Task<Result> GetAllOrganizationsAsync();
+        Task<Result> GetOrganizationByIdAsync(int id);
+        Task<Result> GetOrganizationByEmailAsync(string email);
+        Task<Result> CreateOrganizationAsync(OrganizationCreateDto organizationCreateDto);
+        Task<Result> UpdateOrganizationAsync(OrganizationUpdateDto organizationUpdateDto);
+        Task<Result> DeleteOrganizationAsync(int id);
     }
 }
