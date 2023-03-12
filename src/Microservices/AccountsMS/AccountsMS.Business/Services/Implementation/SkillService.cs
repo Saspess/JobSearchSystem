@@ -1,7 +1,7 @@
 ﻿using AccountsMS.Business.DTOs.Skill;
-using AccountsMS.Business.Exceptions;
-using AccountsMS.Business.Responce.Enums;
-using AccountsMS.Business.Responce.NonGeneric;
+using AccountsMS.Business.Response.Enums;
+using AccountsMS.Business.Response.Generic;
+using AccountsMS.Business.Response.NonGeneric;
 using AccountsMS.Business.Services.Contracts;
 using AccountsMS.Data.Models.Skill;
 using AccountsMS.Data.Repositories.Contracts;
@@ -33,7 +33,7 @@ namespace AccountsMS.Business.Services.Implementation
         {
             var skillModel = await _skillRepository.GetSkillByIdAsync(id);
 
-            if(skillModel == null)
+            if (skillModel == null)
             {
                 return Result.Failed(AccountsMSErrorCodes.EntityNotFound, "Skill not found.");
             }

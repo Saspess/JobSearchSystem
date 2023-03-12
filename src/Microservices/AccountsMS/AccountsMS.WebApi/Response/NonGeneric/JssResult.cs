@@ -1,4 +1,4 @@
-﻿using AccountsMS.Business.Responce.Enums.EnumExtensions;
+﻿using AccountsMS.Business.Response.Enums.EnumExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using System.Net;

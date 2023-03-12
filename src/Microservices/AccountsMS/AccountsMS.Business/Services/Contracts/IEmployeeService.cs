@@ -1,6 +1,5 @@
 ﻿using AccountsMS.Business.DTOs.Employee;
-using AccountsMS.Business.DTOs.EmployeeSkill;
-using AccountsMS.Business.Responce.NonGeneric;
+using AccountsMS.Business.Response.NonGeneric;
 
 namespace AccountsMS.Business.Services.Contracts
 {

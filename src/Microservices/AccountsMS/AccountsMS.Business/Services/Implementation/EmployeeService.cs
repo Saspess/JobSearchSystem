@@ -1,7 +1,8 @@
 ﻿using AccountsMS.Business.DTOs.Employee;
 using AccountsMS.Business.DTOs.EmployeeSkill;
-using AccountsMS.Business.Responce.Enums;
-using AccountsMS.Business.Responce.NonGeneric;
+using AccountsMS.Business.Response.Enums;
+using AccountsMS.Business.Response.Generic;
+using AccountsMS.Business.Response.NonGeneric;
 using AccountsMS.Business.Services.Contracts;
 using AccountsMS.Data.Models.Employee;
 using AccountsMS.Data.Repositories.Contracts;

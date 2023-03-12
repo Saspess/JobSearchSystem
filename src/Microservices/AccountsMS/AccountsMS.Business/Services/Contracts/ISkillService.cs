@@ -1,5 +1,5 @@
 ﻿using AccountsMS.Business.DTOs.Skill;
-using AccountsMS.Business.Responce.NonGeneric;
+using AccountsMS.Business.Response.NonGeneric;
 
 namespace AccountsMS.Business.Services.Contracts
 {
