@@ -20,7 +20,7 @@ namespace AccountsMS.Business.Services.Implementation
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public async Task<Result> GetAllSkillsAsync()
+        public async Task<Result<IEnumerable<SkillViewDto>>> GetAllSkillsAsync()
         {
             var skillsModels = await _skillRepository.GetAllSkillsAsync();
 
@@ -29,13 +29,13 @@ namespace AccountsMS.Business.Services.Implementation
             return Result<IEnumerable<SkillViewDto>>.Successed(skillsViewDtos);
         }
 
-        public async Task<Result> GetSkillByIdAsync(int id)
+        public async Task<Result<SkillViewDto>> GetSkillByIdAsync(int id)
         {
             var skillModel = await _skillRepository.GetSkillByIdAsync(id);
 
             if (skillModel == null)
             {
-                return Result.Failed(AccountsMSErrorCodes.EntityNotFound, "Skill not found.");
+                return Result<SkillViewDto>.Failed(AccountsMSErrorCodes.EntityNotFound, "Skill not found.");
             }
 
             var skillViewDto = _mapper.Map<SkillViewDto>(skillModel);
@@ -43,11 +43,11 @@ namespace AccountsMS.Business.Services.Implementation
             return Result<SkillViewDto>.Successed(skillViewDto);
         }
 
-        public async Task<Result> CreateSkillAsync(SkillCreateDto skillCreateDto)
+        public async Task<Result<SkillViewDto>> CreateSkillAsync(SkillCreateDto skillCreateDto)
         {
             if (skillCreateDto == null)
             {
-                return Result.Failed(AccountsMSErrorCodes.NullArgument, nameof(skillCreateDto));
+                return Result<SkillViewDto>.Failed(AccountsMSErrorCodes.NullArgument, nameof(skillCreateDto));
             }
 
             var skillCreateModel = _mapper.Map<SkillCreateModel>(skillCreateDto);

@@ -1,4 +1,5 @@
-﻿using AccountsMS.Business.DTOs.Organization;
+﻿using AccountsMS.Business.DTOs.Employee;
+using AccountsMS.Business.DTOs.Organization;
 using AccountsMS.Business.Response.Enums;
 using AccountsMS.Business.Response.Generic;
 using AccountsMS.Business.Response.NonGeneric;
@@ -20,7 +21,7 @@ namespace AccountsMS.Business.Services.Implementation
             _mapper = mapper;
         }
 
-        public async Task<Result> GetAllOrganizationsAsync()
+        public async Task<Result<IEnumerable<OrganizationViewDto>>> GetAllOrganizationsAsync()
         {
             var organizationsModels = await _organizationRepository.GetAllOrganizationsAsync();
 
@@ -29,13 +30,13 @@ namespace AccountsMS.Business.Services.Implementation
             return Result<IEnumerable<OrganizationViewDto>>.Successed(organizationsViewDtos);
         }
 
-        public async Task<Result> GetOrganizationByIdAsync(int id)
+        public async Task<Result<OrganizationViewDto>> GetOrganizationByIdAsync(int id)
         {
             var organizationModel = await _organizationRepository.GetOrganizationByIdAsync(id);
 
             if (organizationModel == null)
             {
-                return Result.Failed(AccountsMSErrorCodes.EntityNotFound, "Organization not found.");
+                return Result<OrganizationViewDto>.Failed(AccountsMSErrorCodes.EntityNotFound, "Organization not found.");
             }
 
             var organizationViewDto = _mapper.Map<OrganizationViewDto>(organizationModel);
@@ -43,13 +44,13 @@ namespace AccountsMS.Business.Services.Implementation
             return Result<OrganizationViewDto>.Successed(organizationViewDto);
         }
 
-        public async Task<Result> GetOrganizationByEmailAsync(string email)
+        public async Task<Result<OrganizationViewDto>> GetOrganizationByEmailAsync(string email)
         {
             var organizationModel = await _organizationRepository.GetOrganizationByEmailAsync(email);
 
             if (organizationModel == null)
             {
-                return Result.Failed(AccountsMSErrorCodes.EntityNotFound, "Organization not found.");
+                return Result<OrganizationViewDto>.Failed(AccountsMSErrorCodes.EntityNotFound, "Organization not found.");
             }
 
             var organizationViewDto = _mapper.Map<OrganizationViewDto>(organizationModel);
@@ -57,11 +58,11 @@ namespace AccountsMS.Business.Services.Implementation
             return Result<OrganizationViewDto>.Successed(organizationViewDto);
         }
 
-        public async Task<Result> CreateOrganizationAsync(OrganizationCreateDto organizationCreateDto)
+        public async Task<Result<OrganizationViewDto>> CreateOrganizationAsync(OrganizationCreateDto organizationCreateDto)
         {
             if (organizationCreateDto == null)
             {
-                return Result.Failed(AccountsMSErrorCodes.NullArgument, nameof(organizationCreateDto));
+                return Result<OrganizationViewDto>.Failed(AccountsMSErrorCodes.NullArgument, nameof(organizationCreateDto));
             }
 
             var organizationCreateModel = _mapper.Map<OrganizationCreateModel>(organizationCreateDto);

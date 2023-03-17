@@ -35,5 +35,10 @@ namespace AccountsMS.Business.Response.Generic
         {
             return new Result<T>(true, result);
         }
+
+        public static Result<T> Failed(Enum code, string customErrorMessage)
+        {
+            return new Result<T>(false, code, customErrorMessage);
+        }
     }
 }

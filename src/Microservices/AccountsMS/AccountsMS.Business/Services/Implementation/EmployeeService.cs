@@ -25,7 +25,7 @@ namespace AccountsMS.Business.Services.Implementation
             _mapper = mapper;
         }
 
-        public async Task<Result> GetAllEmployeesAsync()
+        public async Task<Result<IEnumerable<EmployeeViewDto>>> GetAllEmployeesAsync()
         {
             var employeesModels = await _employeeRepository.GetAllEmployeesAsync();
 
@@ -34,7 +34,7 @@ namespace AccountsMS.Business.Services.Implementation
             return Result<IEnumerable<EmployeeViewDto>>.Successed(employeesViewDtos);
         }
 
-        public async Task<Result> GetEmployeesBySkillNameAsync(string skillName)
+        public async Task<Result<IEnumerable<EmployeeViewDto>>> GetEmployeesBySkillNameAsync(string skillName)
         {
             var employeesModels = await _employeeRepository.GetEmployeesBySkillNameAsync(skillName);
 
@@ -43,13 +43,13 @@ namespace AccountsMS.Business.Services.Implementation
             return Result<IEnumerable<EmployeeViewDto>>.Successed(employeesViewDtos);
         }
 
-        public async Task<Result> GetAllEmployeeSkillsAsync(int id)
+        public async Task<Result<IEnumerable<EmployeeSkillViewDto>>> GetAllEmployeeSkillsAsync(int id)
         {
             var employeeModel = await _employeeRepository.GetEmployeeByIdAsync(id);
 
             if (employeeModel == null)
             {
-                return Result.Failed(AccountsMSErrorCodes.EntityNotFound, "Employee not found.");
+                return Result<IEnumerable<EmployeeSkillViewDto>>.Failed(AccountsMSErrorCodes.EntityNotFound, "Employee not found.");
             }
 
             var employeeSkillsModels = await _employeeSkillRepository.GetAllEmployeeSkillsAsync(id);
@@ -59,13 +59,13 @@ namespace AccountsMS.Business.Services.Implementation
             return Result<IEnumerable<EmployeeSkillViewDto>>.Successed(employeeSkillsViewDtos);
         }
 
-        public async Task<Result> GetEmployeeByIdAsync(int id)
+        public async Task<Result<EmployeeViewDto>> GetEmployeeByIdAsync(int id)
         {
             var employeeModel = await _employeeRepository.GetEmployeeByIdAsync(id);
 
             if (employeeModel == null)
             {
-                return Result.Failed(AccountsMSErrorCodes.EntityNotFound, "Employee not found.");
+                return Result<EmployeeViewDto>.Failed(AccountsMSErrorCodes.EntityNotFound, "Employee not found.");
             }
 
             var employeeViewDto = _mapper.Map<EmployeeViewDto>(employeeModel);
@@ -73,13 +73,13 @@ namespace AccountsMS.Business.Services.Implementation
             return Result<EmployeeViewDto>.Successed(employeeViewDto);
         }
 
-        public async Task<Result> GetEmployeeByEmailAsync(string email)
+        public async Task<Result<EmployeeViewDto>> GetEmployeeByEmailAsync(string email)
         {
             var employeeModel = await _employeeRepository.GetEmployeeByEmailAsync(email);
 
             if (employeeModel == null)
             {
-                return Result.Failed(AccountsMSErrorCodes.EntityNotFound, "Employee not found.");
+                return Result<EmployeeViewDto>.Failed(AccountsMSErrorCodes.EntityNotFound, "Employee not found.");
             }
 
             var employeeViewDto = _mapper.Map<EmployeeViewDto>(employeeModel);
@@ -87,11 +87,11 @@ namespace AccountsMS.Business.Services.Implementation
             return Result<EmployeeViewDto>.Successed(employeeViewDto);
         }
 
-        public async Task<Result> CreateEmployeeAsync(EmployeeCreateDto employeeCreateDto)
+        public async Task<Result<EmployeeViewDto>> CreateEmployeeAsync(EmployeeCreateDto employeeCreateDto)
         {
             if (employeeCreateDto == null)
             {
-                return Result.Failed(AccountsMSErrorCodes.NullArgument, nameof(employeeCreateDto));
+                return Result<EmployeeViewDto>.Failed(AccountsMSErrorCodes.NullArgument, nameof(employeeCreateDto));
             }
 
             var employeeCreateModel = _mapper.Map<EmployeeCreateModel>(employeeCreateDto);
