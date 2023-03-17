@@ -9,7 +9,7 @@ namespace AccountsMS.WebApi.Response.Generic
     {
         private readonly ActionResultBody<T> _resultBody;
 
-        public JssResult(HttpStatusCode httpStatusCode, Enum code, T value = default(T)) : base(httpStatusCode, code)
+        public JssResult(HttpStatusCode httpStatusCode, Enum code = null, T value = default(T)) : base(httpStatusCode, code)
         {
             _resultBody = new ActionResultBody<T>(Code, Description, value);
         }

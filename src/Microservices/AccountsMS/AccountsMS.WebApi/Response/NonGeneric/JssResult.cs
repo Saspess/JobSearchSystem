@@ -13,7 +13,7 @@ namespace AccountsMS.WebApi.Response.NonGeneric
         internal string Description { get; set; }
         internal Enum Code { get; set; }
 
-        public JssResult(HttpStatusCode httpStatusCode, Enum code)
+        public JssResult(HttpStatusCode httpStatusCode, Enum code = null)
         {
             Code = code;
             Description = code.GetDescription();

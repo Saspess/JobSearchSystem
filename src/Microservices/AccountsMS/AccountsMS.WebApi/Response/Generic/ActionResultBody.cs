@@ -6,7 +6,7 @@ namespace AccountsMS.WebApi.Response.Generic
     {
         public T Value { get; set; }
 
-        public ActionResultBody(Enum code, string description, T value = default(T)) : base(code, description)
+        public ActionResultBody(Enum code = null, string description = null, T value = default(T)) : base(code, description)
         {
             Value = value;
         }
