@@ -103,23 +103,23 @@ namespace AccountsMS.Business.Services.Implementation
             return Result<EmployeeViewDto>.Successed(createdEmployeeViewDto);
         }
 
-        public async Task<Result> AddEmployeeSkillAsync(int employeeId, int skillId)
+        public async Task<Result> AddEmployeeSkillAsync(EmployeeSkillDto employeeSkillDto)
         {
-            var existingEmployeeModel = await _employeeRepository.GetEmployeeByIdAsync(employeeId);
+            var existingEmployeeModel = await _employeeRepository.GetEmployeeByIdAsync(employeeSkillDto.EmployeeId);
 
             if (existingEmployeeModel == null)
             {
                 return Result.Failed(AccountsMSErrorCodes.EntityNotFound, "Employee not found.");
             }
 
-            var existingSkillModel = await _skillRepository.GetSkillByIdAsync(skillId);
+            var existingSkillModel = await _skillRepository.GetSkillByIdAsync(employeeSkillDto.SkillId);
 
             if (existingSkillModel == null)
             {
                 return Result.Failed(AccountsMSErrorCodes.EntityNotFound, "Skill not found.");
             }
 
-            await _employeeSkillRepository.AddEmployeeSkillAsync(employeeId, skillId);
+            await _employeeSkillRepository.AddEmployeeSkillAsync(employeeSkillDto.EmployeeId, employeeSkillDto.SkillId);
 
             return Result.Successed();
         }
@@ -145,23 +145,23 @@ namespace AccountsMS.Business.Services.Implementation
             return Result.Successed();
         }
 
-        public async Task<Result> ConfirmEmployeeSkillAsync(int employeeId, int skillId)
+        public async Task<Result> ConfirmEmployeeSkillAsync(EmployeeSkillDto employeeSkillDto)
         {
-            var existingEmployeeModel = await _employeeRepository.GetEmployeeByIdAsync(employeeId);
+            var existingEmployeeModel = await _employeeRepository.GetEmployeeByIdAsync(employeeSkillDto.EmployeeId);
 
             if (existingEmployeeModel == null)
             {
                 return Result.Failed(AccountsMSErrorCodes.EntityNotFound, "Employee not found.");
             }
 
-            var existingSkillModel = await _skillRepository.GetSkillByIdAsync(skillId);
+            var existingSkillModel = await _skillRepository.GetSkillByIdAsync(employeeSkillDto.SkillId);
 
             if (existingSkillModel == null)
             {
                 return Result.Failed(AccountsMSErrorCodes.EntityNotFound, "Skill not found.");
             }
 
-            await _employeeSkillRepository.ConfirmEmployeeSkillAsync(employeeId, skillId);
+            await _employeeSkillRepository.ConfirmEmployeeSkillAsync(employeeSkillDto.EmployeeId, employeeSkillDto.SkillId);
 
             return Result.Successed();
         }
@@ -180,23 +180,23 @@ namespace AccountsMS.Business.Services.Implementation
             return Result.Successed();
         }
 
-        public async Task<Result> DeleteEmployeeSkillAsync(int employeeId, int skillId)
+        public async Task<Result> DeleteEmployeeSkillAsync(EmployeeSkillDto employeeSkillDto)
         {
-            var existingEmployeeModel = await _employeeRepository.GetEmployeeByIdAsync(employeeId);
+            var existingEmployeeModel = await _employeeRepository.GetEmployeeByIdAsync(employeeSkillDto.EmployeeId);
 
             if (existingEmployeeModel == null)
             {
                 return Result.Failed(AccountsMSErrorCodes.EntityNotFound, "Employee not found.");
             }
 
-            var existingSkillModel = await _skillRepository.GetSkillByIdAsync(skillId);
+            var existingSkillModel = await _skillRepository.GetSkillByIdAsync(employeeSkillDto.SkillId);
 
             if (existingSkillModel == null)
             {
                 return Result.Failed(AccountsMSErrorCodes.EntityNotFound, "Skill not found.");
             }
 
-            await _employeeSkillRepository.DeleteEmployeeSkillAsync(employeeId, skillId);
+            await _employeeSkillRepository.DeleteEmployeeSkillAsync(employeeSkillDto.EmployeeId, employeeSkillDto.SkillId);
 
             return Result.Successed();
         }

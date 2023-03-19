@@ -13,10 +13,10 @@ namespace AccountsMS.Business.Services.Contracts
         Task<Result<EmployeeViewDto>> GetEmployeeByIdAsync(int id);
         Task<Result<EmployeeViewDto>> GetEmployeeByEmailAsync(string email);
         Task<Result<EmployeeViewDto>> CreateEmployeeAsync(EmployeeCreateDto employeeCreateDto);
-        Task<Result> AddEmployeeSkillAsync(int employeeId, int skillId);
+        Task<Result> AddEmployeeSkillAsync(EmployeeSkillDto employeeSkillDto);
         Task<Result> UpdateEmployeeAsync(EmployeeUpdateDto employeeUpdateDto);
-        Task<Result> ConfirmEmployeeSkillAsync(int employeeId, int skillId);
+        Task<Result> ConfirmEmployeeSkillAsync(EmployeeSkillDto employeeSkillDto);
         Task<Result> DeleteEmployeeAsync(int id);
-        Task<Result> DeleteEmployeeSkillAsync(int employeeId, int skillId);
+        Task<Result> DeleteEmployeeSkillAsync(EmployeeSkillDto employeeSkillDto);
     }
 }
