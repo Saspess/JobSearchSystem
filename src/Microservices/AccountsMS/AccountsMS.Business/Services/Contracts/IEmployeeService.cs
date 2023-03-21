@@ -1,20 +1,22 @@
 ﻿using AccountsMS.Business.DTOs.Employee;
 using AccountsMS.Business.DTOs.EmployeeSkill;
+using AccountsMS.Business.Response.Generic;
+using AccountsMS.Business.Response.NonGeneric;
 
 namespace AccountsMS.Business.Services.Contracts
 {
     public interface IEmployeeService
     {
-        Task<IEnumerable<EmployeeViewDto>> GetAllEmployeesAsync();
-        Task<IEnumerable<EmployeeViewDto>> GetEmployeesBySkillNameAsync(string skillName);
-        Task<IEnumerable<EmployeeSkillViewDto>> GetAllEmployeeSkillsAsync(int id);
-        Task<EmployeeViewDto> GetEmployeeByIdAsync(int id);
-        Task<EmployeeViewDto> GetEmployeeByEmailAsync(string email);
-        Task<EmployeeViewDto> CreateEmployeeAsync(EmployeeCreateDto employeeCreateDto);
-        Task AddEmployeeSkillAsync(int employeeId, int skillId);
-        Task UpdateEmployeeAsync(EmployeeUpdateDto employeeUpdateDto);
-        Task ConfirmEmployeeSkillAsync(int employeeId, int skillId);
-        Task DeleteEmployeeAsync(int id);
-        Task DeleteEmployeeSkillAsync(int employeeId, int skillId);
+        Task<Result<IEnumerable<EmployeeViewDto>>> GetAllEmployeesAsync();
+        Task<Result<IEnumerable<EmployeeViewDto>>> GetEmployeesBySkillNameAsync(string skillName);
+        Task<Result<IEnumerable<EmployeeSkillViewDto>>> GetAllEmployeeSkillsAsync(int id);
+        Task<Result<EmployeeViewDto>> GetEmployeeByIdAsync(int id);
+        Task<Result<EmployeeViewDto>> GetEmployeeByEmailAsync(string email);
+        Task<Result<EmployeeViewDto>> CreateEmployeeAsync(EmployeeCreateDto employeeCreateDto);
+        Task<Result> AddEmployeeSkillAsync(EmployeeSkillDto employeeSkillDto);
+        Task<Result> UpdateEmployeeAsync(EmployeeUpdateDto employeeUpdateDto);
+        Task<Result> ConfirmEmployeeSkillAsync(EmployeeSkillDto employeeSkillDto);
+        Task<Result> DeleteEmployeeAsync(int id);
+        Task<Result> DeleteEmployeeSkillAsync(EmployeeSkillDto employeeSkillDto);
     }
 }
