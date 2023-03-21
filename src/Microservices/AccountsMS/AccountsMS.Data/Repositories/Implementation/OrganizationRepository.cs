@@ -78,9 +78,9 @@ namespace AccountsMS.Data.Repositories.Implementation
             {
                 await connection.OpenAsync();
 
-                var command = new SqlCommand("spGetOrganizationeByEmail", connection);
+                var command = new SqlCommand("spGetOrganizationByEmail", connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@Organization_ID", email);
+                command.Parameters.AddWithValue("@Email", email);
 
                 var reader = await command.ExecuteReaderAsync();
 

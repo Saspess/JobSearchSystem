@@ -116,7 +116,7 @@ namespace AccountsMS.Data.Repositories.Implementation
 
                 var command = new SqlCommand("spGetEmployeeByEmail", connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@Employee_ID", email);
+                command.Parameters.AddWithValue("@Email", email);
 
                 var reader = await command.ExecuteReaderAsync();
 

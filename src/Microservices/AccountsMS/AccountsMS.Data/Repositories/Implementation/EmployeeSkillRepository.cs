@@ -31,7 +31,7 @@ namespace AccountsMS.Data.Repositories.Implementation
                     var employeeSkillModel = new EmployeeSkillModel()
                     {
                         Name = reader["Name"].ToString(),
-                        ConfirmationCount = Convert.ToInt32(reader["Confirmation_count"])
+                        ConfirmationCount = Convert.ToInt32(reader["Сonfirmations_count"])
                     };
 
                     employeeSkills.Add(employeeSkillModel);
