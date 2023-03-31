@@ -1,7 +1,7 @@
 ﻿using IdentityMS.Data.Contexts.Contracts;
 using IdentityMS.Data.Contexts.Implementation;
-/*using IdentityMS.Data.Repositories.Contracts;
-using IdentityMS.Data.Repositories.Implementation;*/
+using IdentityMS.Data.Repositories.Contracts;
+using IdentityMS.Data.Repositories.Implementation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,12 +21,12 @@ namespace IdentityMS.Data.IoC
         {
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
         }
-        /*
-        public static IServiceCollection AddRepositories(this IServiceCollection services)
+        
+        public static IServiceCollection ConfigureRepositories(this IServiceCollection services)
         {
             services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
-        }*/
+        }
     }
 }
