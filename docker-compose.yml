@@ -7,7 +7,16 @@ services:
     build:
       context: .
       dockerfile: src/Microservices/AccountsMS/AccountsMS.WebApi/Dockerfile
-    
+  
+  identityms.webapi:
+    container_name: "IdentityMS.WebApi"
+    image: ${DOCKER_REGISTRY-}identitymswebapi
+    build:
+      context: .
+      dockerfile: src/Microservices/IdentityMS/IdentityMS.WebApi/Dockerfile   
+
   mssqldb:
     container_name: "MsSqlDB"
     image: "mcr.microsoft.com/mssql/server:2019-latest"
+
+
