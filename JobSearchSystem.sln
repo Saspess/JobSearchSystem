@@ -9,13 +9,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AccountsMS", "AccountsMS", "{03E8A97A-3171-4334-9338-F9CC55054174}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountsMS.WebApi", "src\Microservices\AccountsMS\AccountsMS.WebApi\AccountsMS.WebApi.csproj", "{E7FEB8AE-2985-4C83-9A45-701F437D2F11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountsMS.WebApi", "src\Microservices\AccountsMS\AccountsMS.WebApi\AccountsMS.WebApi.csproj", "{E7FEB8AE-2985-4C83-9A45-701F437D2F11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountsMS.Business", "src\Microservices\AccountsMS\AccountsMS.Business\AccountsMS.Business.csproj", "{22E37A04-002D-434F-B705-0D325C80CA9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountsMS.Business", "src\Microservices\AccountsMS\AccountsMS.Business\AccountsMS.Business.csproj", "{22E37A04-002D-434F-B705-0D325C80CA9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountsMS.Data", "src\Microservices\AccountsMS\AccountsMS.Data\AccountsMS.Data.csproj", "{9D90E84E-A866-4AE9-9D9B-80F6A7AE7152}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountsMS.Data", "src\Microservices\AccountsMS\AccountsMS.Data\AccountsMS.Data.csproj", "{9D90E84E-A866-4AE9-9D9B-80F6A7AE7152}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1F13F12F-A99A-4AAE-AA45-DBC23FBA77D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityMS", "IdentityMS", "{0959E567-2B91-41F2-889B-E2AB8D789171}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityMS.WebApi", "src\Microservices\IdentityMS\IdentityMS.WebApi\IdentityMS.WebApi.csproj", "{066280F4-0C7D-4AC3-BA3F-19C3F370D3A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityMS.Data", "src\Microservices\IdentityMS\IdentityMS.Data\IdentityMS.Data.csproj", "{4428C830-938F-4D4B-8EF8-7D90AA3F8B9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityMS.Business", "src\Microservices\IdentityMS\IdentityMS.Business\IdentityMS.Business.csproj", "{68E48F49-B419-4B71-9E44-3C605A92C2AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +47,18 @@ Global
 		{1F13F12F-A99A-4AAE-AA45-DBC23FBA77D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F13F12F-A99A-4AAE-AA45-DBC23FBA77D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F13F12F-A99A-4AAE-AA45-DBC23FBA77D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{066280F4-0C7D-4AC3-BA3F-19C3F370D3A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{066280F4-0C7D-4AC3-BA3F-19C3F370D3A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{066280F4-0C7D-4AC3-BA3F-19C3F370D3A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{066280F4-0C7D-4AC3-BA3F-19C3F370D3A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4428C830-938F-4D4B-8EF8-7D90AA3F8B9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4428C830-938F-4D4B-8EF8-7D90AA3F8B9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4428C830-938F-4D4B-8EF8-7D90AA3F8B9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4428C830-938F-4D4B-8EF8-7D90AA3F8B9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68E48F49-B419-4B71-9E44-3C605A92C2AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68E48F49-B419-4B71-9E44-3C605A92C2AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68E48F49-B419-4B71-9E44-3C605A92C2AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68E48F49-B419-4B71-9E44-3C605A92C2AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +69,10 @@ Global
 		{E7FEB8AE-2985-4C83-9A45-701F437D2F11} = {03E8A97A-3171-4334-9338-F9CC55054174}
 		{22E37A04-002D-434F-B705-0D325C80CA9F} = {03E8A97A-3171-4334-9338-F9CC55054174}
 		{9D90E84E-A866-4AE9-9D9B-80F6A7AE7152} = {03E8A97A-3171-4334-9338-F9CC55054174}
+		{0959E567-2B91-41F2-889B-E2AB8D789171} = {DA4C2723-BCAE-443B-819F-2254BD3695FC}
+		{066280F4-0C7D-4AC3-BA3F-19C3F370D3A8} = {0959E567-2B91-41F2-889B-E2AB8D789171}
+		{4428C830-938F-4D4B-8EF8-7D90AA3F8B9B} = {0959E567-2B91-41F2-889B-E2AB8D789171}
+		{68E48F49-B419-4B71-9E44-3C605A92C2AD} = {0959E567-2B91-41F2-889B-E2AB8D789171}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6248D3AD-7981-47F3-A282-EFEFB05E2F93}
