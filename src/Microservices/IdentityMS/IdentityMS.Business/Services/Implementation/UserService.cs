@@ -8,6 +8,7 @@ using IdentityMS.Business.Response.NonGeneric;
 using IdentityMS.Business.Services.Contracts;
 using IdentityMS.Data.Entities;
 using IdentityMS.Data.Repositories.Contracts;
+using Kafka.Contracts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -22,12 +23,16 @@ namespace IdentityMS.Business.Services.Implementation
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
+        private readonly IKafkaProducer<string, EmployeeMessageDto> _kafkaEmployeeProducer;
+        private readonly IKafkaProducer<string, OrganizationMessageDto> _kafkaOrganizationProducer;
 
-        public UserService(IConfiguration configuration, IMapper mapper, IUserRepository userRepository)
+        public UserService(IConfiguration configuration, IMapper mapper, IUserRepository userRepository, IKafkaProducer<string, EmployeeMessageDto> kafkaEmployeeProducer, IKafkaProducer<string, OrganizationMessageDto> kafkaOrganizationProducer)
         {
             _configuration = configuration;
             _mapper = mapper;
             _userRepository = userRepository;
+            _kafkaEmployeeProducer = kafkaEmployeeProducer;
+            _kafkaOrganizationProducer = kafkaOrganizationProducer;
         }
 
         public async Task<Result<IEnumerable<UserViewDto>>> GetAllUsersAsync()
@@ -55,6 +60,8 @@ namespace IdentityMS.Business.Services.Implementation
 
             var employeeMessageDto = _mapper.Map<EmployeeMessageDto>(employeeRegisterDto);
 
+            await _kafkaEmployeeProducer.ProduceAsync("registerEmployee", employeeMessageDto);
+
             var userEntity = _mapper.Map<UserEntity>(employeeRegisterDto);
 
             var createdUser = await _userRepository.CreateUserAsync(userEntity);
@@ -79,6 +86,8 @@ namespace IdentityMS.Business.Services.Implementation
             }
 
             var organizationMessageDto = _mapper.Map<OrganizationMessageDto>(organizationRegisterDto);
+            
+            await _kafkaOrganizationProducer.ProduceAsync("registerOrganization", organizationMessageDto);
 
             var userEntity = _mapper.Map<UserEntity>(organizationRegisterDto);
 
