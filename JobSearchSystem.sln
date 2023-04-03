@@ -19,12 +19,17 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityMS", "IdentityMS", "{0959E567-2B91-41F2-889B-E2AB8D789171}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityMS.WebApi", "src\Microservices\IdentityMS\IdentityMS.WebApi\IdentityMS.WebApi.csproj", "{066280F4-0C7D-4AC3-BA3F-19C3F370D3A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityMS.WebApi", "src\Microservices\IdentityMS\IdentityMS.WebApi\IdentityMS.WebApi.csproj", "{066280F4-0C7D-4AC3-BA3F-19C3F370D3A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityMS.Data", "src\Microservices\IdentityMS\IdentityMS.Data\IdentityMS.Data.csproj", "{4428C830-938F-4D4B-8EF8-7D90AA3F8B9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityMS.Data", "src\Microservices\IdentityMS\IdentityMS.Data\IdentityMS.Data.csproj", "{4428C830-938F-4D4B-8EF8-7D90AA3F8B9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityMS.Business", "src\Microservices\IdentityMS\IdentityMS.Business\IdentityMS.Business.csproj", "{68E48F49-B419-4B71-9E44-3C605A92C2AD}"
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountsMS.Tests", "src\Microservices\AccountsMS\AccountsMS.Tests\AccountsMS.Tests.csproj", "{73C0B45E-7450-4AAB-B20C-2DDA820906B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityMS.Business", "src\Microservices\IdentityMS\IdentityMS.Business\IdentityMS.Business.csproj", "{68E48F49-B419-4B71-9E44-3C605A92C2AD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountsMS.Tests", "src\Microservices\AccountsMS\AccountsMS.Tests\AccountsMS.Tests.csproj", "{73C0B45E-7450-4AAB-B20C-2DDA820906B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessageBroker", "MessageBroker", "{5E42B0B8-87BD-4646-8A83-EC8D07BFEA03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kafka", "src\MessageBroker\Kafka\Kafka.csproj", "{D58FB8B8-761C-452B-A216-770207075806}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,6 +69,10 @@ Global
 		{73C0B45E-7450-4AAB-B20C-2DDA820906B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73C0B45E-7450-4AAB-B20C-2DDA820906B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73C0B45E-7450-4AAB-B20C-2DDA820906B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D58FB8B8-761C-452B-A216-770207075806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D58FB8B8-761C-452B-A216-770207075806}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D58FB8B8-761C-452B-A216-770207075806}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D58FB8B8-761C-452B-A216-770207075806}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +88,8 @@ Global
 		{4428C830-938F-4D4B-8EF8-7D90AA3F8B9B} = {0959E567-2B91-41F2-889B-E2AB8D789171}
 		{68E48F49-B419-4B71-9E44-3C605A92C2AD} = {0959E567-2B91-41F2-889B-E2AB8D789171}
 		{73C0B45E-7450-4AAB-B20C-2DDA820906B4} = {03E8A97A-3171-4334-9338-F9CC55054174}
+		{5E42B0B8-87BD-4646-8A83-EC8D07BFEA03} = {A35766A0-99B8-4E2B-B4B8-955DA5E95402}
+		{D58FB8B8-761C-452B-A216-770207075806} = {5E42B0B8-87BD-4646-8A83-EC8D07BFEA03}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6248D3AD-7981-47F3-A282-EFEFB05E2F93}

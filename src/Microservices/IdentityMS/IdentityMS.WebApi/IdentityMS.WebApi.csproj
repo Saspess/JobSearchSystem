@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\MessageBroker\Kafka\Kafka.csproj" />
     <ProjectReference Include="..\IdentityMS.Business\IdentityMS.Business.csproj" />
     <ProjectReference Include="..\IdentityMS.Data\IdentityMS.Data.csproj" />
   </ItemGroup>

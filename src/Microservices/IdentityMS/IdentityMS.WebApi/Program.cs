@@ -10,7 +10,8 @@ builder.Services.ConfigureSqlContext(builder.Configuration)
     .ConfigureRepositories()
     .ConfigureAutoMapper()
     .ConfigureFluentValidation()
-    .ConfigureServices();
+    .ConfigureServices()
+    .ConfigureProducers();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
