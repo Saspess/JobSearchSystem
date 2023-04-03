@@ -11,6 +11,7 @@ namespace AccountsMS.Business.MappingProfiles
             CreateMap<EmployeeModel, EmployeeViewDto>();
             CreateMap<EmployeeCreateDto, EmployeeCreateModel>();
             CreateMap<EmployeeUpdateDto, EmployeeUpdateModel>();
+            CreateMap<EmployeeMessageDto, EmployeeCreateModel>();
         }
     }
 }
