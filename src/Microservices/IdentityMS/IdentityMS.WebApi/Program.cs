@@ -1,12 +1,16 @@
+using IdentityMS.Business.IoC;
 using IdentityMS.Data.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.ConfigureSqlContext(builder.Configuration);
-builder.Services.ConfigureDbContext();
-builder.Services.ConfigureRepositories();
+builder.Services.ConfigureSqlContext(builder.Configuration)
+    .ConfigureDbContext()
+    .ConfigureRepositories()
+    .ConfigureAutoMapper()
+    .ConfigureFluentValidation()
+    .ConfigureServices();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

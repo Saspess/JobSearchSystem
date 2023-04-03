@@ -10,16 +10,20 @@ namespace IdentityMS.Data.IoC
 {
     public static class ServicesExtensions
     {
-        public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("sqlDbConnection")),
             ServiceLifetime.Transient);
+
+            return services;
         }
 
-        public static void ConfigureDbContext(this IServiceCollection services)
+        public static IServiceCollection ConfigureDbContext(this IServiceCollection services)
         {
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+
+            return services;
         }
         
         public static IServiceCollection ConfigureRepositories(this IServiceCollection services)
