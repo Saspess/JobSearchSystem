@@ -31,11 +31,6 @@ namespace IdentityMS.Business.Validators
                 .Matches("[A-Z]")
                 .Matches("[a-z]")
                 .Matches("[0-9]");
-
-            RuleFor(o => o.Role)
-                .NotNull()
-                .NotEmpty()
-                .IsInEnum();
         }
     }
 }
