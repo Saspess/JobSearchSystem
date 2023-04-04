@@ -1,4 +1,5 @@
 using IdentityMS.Business.IoC;
+using IdentityMS.Business.SeedData;
 using IdentityMS.Data.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +27,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+await app.SeedDataAsync();
 
 app.UseHttpsRedirection();
 
