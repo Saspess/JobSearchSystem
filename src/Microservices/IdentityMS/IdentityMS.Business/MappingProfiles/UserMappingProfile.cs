@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using IdentityMS.Business.DTOs.Employee;
+using IdentityMS.Business.DTOs.Enums;
 using IdentityMS.Business.DTOs.Organization;
 using IdentityMS.Business.DTOs.User;
 using IdentityMS.Data.Entities;
@@ -18,9 +19,14 @@ namespace IdentityMS.Business.MappingProfiles
             CreateMap<EmployeeRegisterDto, UserEntity>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Password, opt => opt.MapFrom(src => GetPasswordHash(src.Password)))
-                .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role.ToString()));
+                .ForMember(dest => dest.Role, opt => opt.MapFrom(src => Roles.employee.ToString()));
 
             CreateMap<OrganizationRegisterDto, UserEntity>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.Password, opt => opt.MapFrom(src => GetPasswordHash(src.Password)))
+                .ForMember(dest => dest.Role, opt => opt.MapFrom(src => Roles.organization.ToString()));
+
+            CreateMap<UserRegisterDto, UserEntity>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Password, opt => opt.MapFrom(src => GetPasswordHash(src.Password)))
                 .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role.ToString()));
