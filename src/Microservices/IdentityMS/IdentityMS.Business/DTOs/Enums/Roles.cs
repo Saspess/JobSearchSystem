@@ -2,8 +2,8 @@
 {
     public enum Roles
     {
-        admin,
-        organization,
-        employee
+        Admin,
+        Organization,
+        Employee
     }
 }
