@@ -1,10 +1,8 @@
 using IdentityMS.Business.IoC;
 using IdentityMS.Business.SeedData;
 using IdentityMS.Data.IoC;
+using IdentityMS.WebApi.IoC;
 using IdentityMS.WebApi.Middleware;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,23 +14,8 @@ builder.Services.ConfigureSqlContext(builder.Configuration)
     .ConfigureAutoMapper()
     .ConfigureFluentValidation()
     .ConfigureServices()
-    .ConfigureProducers();
-
-builder.Services.AddAuthentication(auth =>
-{
-    auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options =>
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidAudience = builder.Configuration["Jwt:Audience"],
-        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
-        ValidateIssuerSigningKey = true
-    }
- );
+    .ConfigureProducers()
+    .ConfigureAuthentication(builder.Configuration);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
