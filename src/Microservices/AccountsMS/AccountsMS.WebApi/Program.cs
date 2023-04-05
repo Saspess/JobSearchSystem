@@ -11,7 +11,8 @@ builder.Services.AddControllers();
 builder.Services.ConfigureRepositories()
     .ConfigureAutoMapper()
     .ConfigureFluentValidation()
-    .ConfigureServices(); ;
+    .ConfigureServices()
+    .ConfigureConsumers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

@@ -11,6 +11,7 @@ namespace AccountsMS.Business.MappingProfiles
             CreateMap<OrganizationModel, OrganizationViewDto>();
             CreateMap<OrganizationCreateDto, OrganizationCreateModel>();
             CreateMap<OrganizationUpdateDto, OrganizationUpdateModel>();
+            CreateMap<OrganizationMessageDto, OrganizationCreateModel>();
         }
     }
 }
