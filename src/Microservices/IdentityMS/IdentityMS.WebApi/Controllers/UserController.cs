@@ -1,9 +1,11 @@
 ﻿using IdentityMS.Business.DTOs.Employee;
+using IdentityMS.Business.DTOs.Enums;
 using IdentityMS.Business.DTOs.Organization;
 using IdentityMS.Business.DTOs.User;
 using IdentityMS.Business.Services.Contracts;
 using IdentityMS.WebApi.Response.Generic;
 using IdentityMS.WebApi.Response.NonGeneric;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IdentityMS.WebApi.Controllers
@@ -75,6 +77,7 @@ namespace IdentityMS.WebApi.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         public async Task<JssResult> UpdateUserAsync([FromBody] UserUpdateDto userUpdateDto)
         {
             var result = await _userService.UpdateUserAsync(userUpdateDto);
@@ -88,6 +91,7 @@ namespace IdentityMS.WebApi.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<JssResult> DeleteUserAsync([FromRoute] int id)
         {
             var result = await _userService.DeleteUserAsync(id);

@@ -2,10 +2,12 @@
 using AccountsMS.Business.Services.Contracts;
 using AccountsMS.WebApi.Response.Generic;
 using AccountsMS.WebApi.Response.NonGeneric;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AccountsMS.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OrganizationController : BaseAccountsMSController
@@ -18,7 +20,7 @@ namespace AccountsMS.WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<JssResult<IEnumerable<OrganizationViewDto>>> GetAllEmployeesAsync()
+        public async Task<JssResult<IEnumerable<OrganizationViewDto>>> GetAllOrganizationsAsync()
         {
             var result = await _organizationService.GetAllOrganizationsAsync();
 
@@ -31,7 +33,7 @@ namespace AccountsMS.WebApi.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<JssResult<OrganizationViewDto>> GetAllEmployeesAsync([FromRoute] int id)
+        public async Task<JssResult<OrganizationViewDto>> GetAllOrganizationByIdAsync([FromRoute] int id)
         {
             var result = await _organizationService.GetOrganizationByIdAsync(id);
 
@@ -44,7 +46,7 @@ namespace AccountsMS.WebApi.Controllers
         }
 
         [HttpGet("{email}")]
-        public async Task<JssResult<OrganizationViewDto>> GetAllEmployeesAsync([FromRoute] string email)
+        public async Task<JssResult<OrganizationViewDto>> GetOrganizationByEmailAsync([FromRoute] string email)
         {
             var result = await _organizationService.GetOrganizationByEmailAsync(email);
 
@@ -57,6 +59,7 @@ namespace AccountsMS.WebApi.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Organization")]
         public async Task<JssResult<OrganizationViewDto>> CreateOrganizationAsync([FromBody] OrganizationCreateDto organizationCreateDto)
         {
             var result = await _organizationService.CreateOrganizationAsync(organizationCreateDto);
@@ -70,6 +73,7 @@ namespace AccountsMS.WebApi.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin, Organization")]
         public async Task<JssResult> UpdateOrganizationAsync([FromBody] OrganizationUpdateDto organizationUpdateDto)
         {
             var result = await _organizationService.UpdateOrganizationAsync(organizationUpdateDto);
@@ -83,6 +87,7 @@ namespace AccountsMS.WebApi.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Admin, Organization")]
         public async Task<JssResult> DeleteOrganizationAsync([FromRoute] int id)
         {
             var result = await _organizationService.DeleteOrganizationAsync(id);

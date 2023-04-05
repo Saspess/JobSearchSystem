@@ -2,11 +2,12 @@
 using AccountsMS.Business.Services.Contracts;
 using AccountsMS.WebApi.Response.Generic;
 using AccountsMS.WebApi.Response.NonGeneric;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AccountsMS.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SkillController : BaseAccountsMSController
@@ -58,6 +59,7 @@ namespace AccountsMS.WebApi.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         public async Task<JssResult> UpdateSkillAsync([FromBody] SkillUpdateDto skillUpdateDto)
         {
             var result = await _skillService.UpdateSkillAsync(skillUpdateDto);
@@ -71,6 +73,7 @@ namespace AccountsMS.WebApi.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<JssResult> DeleteSkillAsync([FromRoute] int id)
         {
             var result = await _skillService.DeleteSkillAsync(id);

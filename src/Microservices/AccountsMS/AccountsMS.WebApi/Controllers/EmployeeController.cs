@@ -3,10 +3,12 @@ using AccountsMS.Business.DTOs.EmployeeSkill;
 using AccountsMS.Business.Services.Contracts;
 using AccountsMS.WebApi.Response.Generic;
 using AccountsMS.WebApi.Response.NonGeneric;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AccountsMS.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class EmployeeController : BaseAccountsMSController
@@ -86,6 +88,7 @@ namespace AccountsMS.WebApi.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<JssResult<EmployeeViewDto>> CreateEmployeeAsync([FromBody] EmployeeCreateDto employeeCreateDto)
         {
             var result = await _employeeService.CreateEmployeeAsync(employeeCreateDto);
@@ -100,6 +103,7 @@ namespace AccountsMS.WebApi.Controllers
 
         [HttpPut]
         [Route("AddSkill")]
+        [Authorize(Roles = "Employee")]
         public async Task<JssResult> AddEmployeeSkillAsync([FromBody] EmployeeSkillDto employeeSkillDto)
         {
             var result = await _employeeService.AddEmployeeSkillAsync(employeeSkillDto);
@@ -113,6 +117,7 @@ namespace AccountsMS.WebApi.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<JssResult> UpdateEmployeeAsync([FromBody] EmployeeUpdateDto employeeUpdateDto)
         {
             var result = await _employeeService.UpdateEmployeeAsync(employeeUpdateDto);
@@ -140,6 +145,7 @@ namespace AccountsMS.WebApi.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<JssResult> DeleteEmployeeAsync([FromRoute] int id)
         {
             var result = await _employeeService.DeleteEmployeeAsync(id);
@@ -154,6 +160,7 @@ namespace AccountsMS.WebApi.Controllers
 
         [HttpDelete]
         [Route("DeleteSkill")]
+        [Authorize(Roles = "Admin, Employee")]
         public async Task<JssResult> DeleteEmployeeSkillAsync([FromBody] EmployeeSkillDto employeeSkillDto)
         {
             var result = await _employeeService.DeleteEmployeeSkillAsync(employeeSkillDto);
