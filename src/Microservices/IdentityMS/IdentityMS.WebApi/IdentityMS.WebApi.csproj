@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
       <PrivateAssets>all</PrivateAssets>
@@ -24,10 +25,6 @@
     <ProjectReference Include="..\..\..\MessageBroker\Kafka\Kafka.csproj" />
     <ProjectReference Include="..\IdentityMS.Business\IdentityMS.Business.csproj" />
     <ProjectReference Include="..\IdentityMS.Data\IdentityMS.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

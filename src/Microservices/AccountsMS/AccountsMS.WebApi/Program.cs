@@ -1,5 +1,6 @@
 using AccountsMS.Business.IoC;
 using AccountsMS.Data.IoC;
+using AccountsMS.WebApi.IoC;
 using AccountsMS.WebApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +13,8 @@ builder.Services.ConfigureRepositories()
     .ConfigureAutoMapper()
     .ConfigureFluentValidation()
     .ConfigureServices()
-    .ConfigureConsumers();
+    .ConfigureConsumers()
+    .ConfigureAuthentication(builder.Configuration);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -30,6 +32,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

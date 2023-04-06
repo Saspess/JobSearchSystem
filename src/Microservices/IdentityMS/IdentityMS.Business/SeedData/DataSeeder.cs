@@ -19,10 +19,6 @@ namespace IdentityMS.Business.SeedData
             using var scope = app.ApplicationServices.CreateScope();
             var services = scope.ServiceProvider;
 
-            var context = services.GetService<ApplicationDbContext>() ?? throw new ServiceNotFoundException("Context was not found.");
-
-            context.Database.Migrate();
-
             var userRepository = services.GetService<IUserRepository>() ?? throw new ServiceNotFoundException("User repository was not found.");
             var mapper = services.GetService<IMapper>() ?? throw new ServiceNotFoundException("Mapper was not found.");
 
@@ -30,7 +26,7 @@ namespace IdentityMS.Business.SeedData
             {
                 Email = "jssadmin@gmail.com",
                 Password = "adminPass123",
-                Role = Roles.admin
+                Role = Roles.Admin
             };
 
             var existedAdmin = await userRepository.GetUserByEmailAsync(userRegisterDto.Email);
