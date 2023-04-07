@@ -15,4 +15,13 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VacanciesMS.Business\VacanciesMS.Business.csproj" />
+    <ProjectReference Include="..\VacanciesMS.Data\VacanciesMS.Data.csproj" />
+  </ItemGroup>
+
 </Project>
