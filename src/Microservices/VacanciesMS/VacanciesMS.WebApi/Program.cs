@@ -1,4 +1,4 @@
-using IdentityMS.Data.IoC;
+using VacanciesMS.Data.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
 

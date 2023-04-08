@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace IdentityMS.Data.IoC
+namespace VacanciesMS.Data.IoC
 {
     public static class ServicesExtensions
     {
