@@ -29,7 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountsMS.Tests", "src\Mic
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessageBroker", "MessageBroker", "{5E42B0B8-87BD-4646-8A83-EC8D07BFEA03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kafka", "src\MessageBroker\Kafka\Kafka.csproj", "{D58FB8B8-761C-452B-A216-770207075806}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kafka", "src\MessageBroker\Kafka\Kafka.csproj", "{D58FB8B8-761C-452B-A216-770207075806}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityMS.Tests", "src\Microservices\IdentityMS\IdentityMS.Tests\IdentityMS.Tests.csproj", "{91A4FB92-CBD4-4BDF-B33C-C772185BD8D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{D58FB8B8-761C-452B-A216-770207075806}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D58FB8B8-761C-452B-A216-770207075806}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D58FB8B8-761C-452B-A216-770207075806}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91A4FB92-CBD4-4BDF-B33C-C772185BD8D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91A4FB92-CBD4-4BDF-B33C-C772185BD8D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91A4FB92-CBD4-4BDF-B33C-C772185BD8D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91A4FB92-CBD4-4BDF-B33C-C772185BD8D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +96,7 @@ Global
 		{73C0B45E-7450-4AAB-B20C-2DDA820906B4} = {03E8A97A-3171-4334-9338-F9CC55054174}
 		{5E42B0B8-87BD-4646-8A83-EC8D07BFEA03} = {A35766A0-99B8-4E2B-B4B8-955DA5E95402}
 		{D58FB8B8-761C-452B-A216-770207075806} = {5E42B0B8-87BD-4646-8A83-EC8D07BFEA03}
+		{91A4FB92-CBD4-4BDF-B33C-C772185BD8D9} = {0959E567-2B91-41F2-889B-E2AB8D789171}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6248D3AD-7981-47F3-A282-EFEFB05E2F93}

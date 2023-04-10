@@ -29,6 +29,7 @@ namespace IdentityMS.Business.Validators
                 .EmailAddress();
 
             RuleFor(e => e.Password)
+                .NotNull()
                 .NotEmpty()
                 .MinimumLength(8)
                 .MaximumLength(100)
