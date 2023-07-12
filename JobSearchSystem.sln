@@ -1,4 +1,3 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -38,6 +37,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VacanciesMS.Data", "src\Microservices\VacanciesMS\VacanciesMS.Data\VacanciesMS.Data.csproj", "{89C1BDF9-7C0F-4232-944E-53C015031C7D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VacanciesMS.Business", "src\Microservices\VacanciesMS\VacanciesMS.Business\VacanciesMS.Business.csproj", "{3AA5AB02-4CC5-406F-B6DA-72B944D75696}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityMS.Tests", "src\Microservices\IdentityMS\IdentityMS.Tests\IdentityMS.Tests.csproj", "{91A4FB92-CBD4-4BDF-B33C-C772185BD8D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +93,10 @@ Global
 		{3AA5AB02-4CC5-406F-B6DA-72B944D75696}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AA5AB02-4CC5-406F-B6DA-72B944D75696}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AA5AB02-4CC5-406F-B6DA-72B944D75696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91A4FB92-CBD4-4BDF-B33C-C772185BD8D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91A4FB92-CBD4-4BDF-B33C-C772185BD8D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91A4FB92-CBD4-4BDF-B33C-C772185BD8D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91A4FB92-CBD4-4BDF-B33C-C772185BD8D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -114,6 +118,8 @@ Global
 		{5A6CF9BD-3347-4ED7-9697-358442B9AEEF} = {FC75DDDC-327A-49E7-BFBE-92576DD142BC}
 		{89C1BDF9-7C0F-4232-944E-53C015031C7D} = {FC75DDDC-327A-49E7-BFBE-92576DD142BC}
 		{3AA5AB02-4CC5-406F-B6DA-72B944D75696} = {FC75DDDC-327A-49E7-BFBE-92576DD142BC}
+		{91A4FB92-CBD4-4BDF-B33C-C772185BD8D9} = {0959E567-2B91-41F2-889B-E2AB8D789171}
+
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6248D3AD-7981-47F3-A282-EFEFB05E2F93}
