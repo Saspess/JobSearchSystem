@@ -11,6 +11,8 @@ namespace VacanciesMS.Data.Configurations
             builder.HasKey(v => v.Id);
             builder.Property(v => v.Id).UseIdentityColumn(1, 1).ValueGeneratedOnAdd();
 
+            builder.Property(v => v.Name).HasMaxLength(255).IsRequired();
+
             builder.Property(v => v.Description).HasMaxLength(255).IsRequired();
         }
     }

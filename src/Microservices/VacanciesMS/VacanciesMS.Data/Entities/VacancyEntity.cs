@@ -2,6 +2,7 @@
 {
     public class VacancyEntity : BaseEntity
     {
+        public string Name { get; set; } = null!;
         public string Description { get; set; } = null!;
 
         public int OrganizationId { get; set; }
